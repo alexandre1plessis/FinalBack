@@ -39,7 +39,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     environment:
-      name: 'production'
+      name: 'dev'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
       id-token: write #This is required for requesting the JWT
@@ -54,8 +54,8 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'eval-git-dev-back'
-          slot-name: 'production'
+          app-name: 'FinalAppDevBack'
+          slot-name: 'dev'
           publish-profile: ${{ secrets.DEV_BACK }}
           package: '*.jar'
 
